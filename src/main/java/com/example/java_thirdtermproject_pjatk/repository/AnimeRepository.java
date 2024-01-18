@@ -15,21 +15,22 @@ import java.util.Optional;
 
 @Repository
 public interface AnimeRepository extends JpaRepository<Anime,Long> {
-    List<Anime> getAnimeByTitle(String title);
+    Optional<Anime> findAnimeByTitle(String title);
 
-    List<Anime> getAnimeByGenders (List<Gender> genders);
+    @Query("select anime from Anime anime where :genders member of anime.genders")     //z
+    List<Anime> findAnimesByGender (List<Gender> genders);
 
-    @Query("select anime.title from Anime anime where anime.malId = :id")
-    List<Anime> getAnimeByMalId(@Param("id") int malId);
+    @Query("select anime from Anime anime where anime.malId = :id")
+    Optional<Anime> findAnimeByMalId(@Param("id") int malId);
 
     @Modifying
     @Transactional
     void deleteAnimeByMalId(Integer malId);
 
-    @Query("SELECT genders FROM Anime where Anime.malId = :id")
-    List<Gender> getGendersByMalId(@Param("id") int malId);
+    @Query("SELECT anime.genders FROM Anime anime where anime.malId = :malId")
+    List<Gender> findGendersByMalId(int malId);
 
-    @Query("SELECT studios FROM Anime where Anime.malId = :id")
-    List<Studio> getStudiosByMalId(@Param("id") int malId);
+    @Query("SELECT anime.studios FROM Anime anime where anime.malId = :malId")
+    List<Studio> findStudiosByMalId(int malId);
 
 }

@@ -11,7 +11,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateAnime {
+public class CreateAnime {      //Dodaj walidacje min/max do rank
     @NotBlank
     private Integer malId;
     @NotBlank

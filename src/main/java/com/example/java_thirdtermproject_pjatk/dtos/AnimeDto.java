@@ -27,7 +27,7 @@ public class AnimeDto {
     private String season;
     private Integer year;
 
-    private List<Studio> studios;
+    private List<StudioDto> studios;
 
-    private List<Gender> genders;
+    private List<GenderDto> genders;
 }

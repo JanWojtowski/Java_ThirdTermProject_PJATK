@@ -30,10 +30,10 @@ public class Anime {
     private String season;
     private Integer year;
 
-    @ManyToMany(mappedBy = "studio", cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Studio> studios = new ArrayList<>();
 
-    @ManyToMany(mappedBy = "genders", cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     private List<Gender> genders = new ArrayList<>();
 
     public Anime(Integer malId, String url, String title, String titleEnglish, String titleJapanese, Integer episodes, String status, String rating, Long rank, String season, Integer year) {

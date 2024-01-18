@@ -4,6 +4,7 @@ import com.example.java_thirdtermproject_pjatk.data.Gender;
 import com.example.java_thirdtermproject_pjatk.dtos.GenderDto;
 import org.springframework.stereotype.Component;
 import com.example.java_thirdtermproject_pjatk.resource.CreateGender;
+import org.springframework.web.bind.annotation.Mapping;
 
 @Component
 public class GenderMapper {
