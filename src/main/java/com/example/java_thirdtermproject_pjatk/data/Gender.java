@@ -1,4 +1,4 @@
-package Data;
+package com.example.java_thirdtermproject_pjatk.data;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,4 +19,11 @@ public class Gender {
     private String name;
     private String type;
     private String url;
+
+    public Gender(long malId, String name, String type, String url) {
+        this.malId = malId;
+        this.name = name;
+        this.type = type;
+        this.url = url;
+    }
 }

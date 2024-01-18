@@ -1,4 +1,4 @@
-package Data;
+package com.example.java_thirdtermproject_pjatk.data;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,4 +20,11 @@ public class Studio {
     private String type;
     private String name;
     private String url;
+
+    public Studio(long malId, String type, String name, String url) {
+        this.malId = malId;
+        this.type = type;
+        this.name = name;
+        this.url = url;
+    }
 }
