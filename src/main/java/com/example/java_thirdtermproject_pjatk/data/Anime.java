@@ -34,7 +34,7 @@ public class Anime {
     private List<Studio> studios = new ArrayList<>();
 
     @ManyToMany(cascade = CascadeType.ALL)
-    private List<Gender> genders = new ArrayList<>();
+    private List<Genre> genres = new ArrayList<>();
 
     public Anime(Integer malId, String url, String title, String titleEnglish, String titleJapanese, Integer episodes, String status, String rating, Long rank, String season, Integer year) {
         this.malId = malId;

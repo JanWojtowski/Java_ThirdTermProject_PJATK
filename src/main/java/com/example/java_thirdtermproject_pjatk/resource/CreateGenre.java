@@ -10,7 +10,7 @@ import lombok.Setter;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CreateGender {
+public class CreateGenre {
     @NotBlank
     private long malId;
     private String name;

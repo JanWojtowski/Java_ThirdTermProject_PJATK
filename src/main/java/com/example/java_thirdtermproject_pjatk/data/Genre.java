@@ -12,7 +12,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-public class Gender {
+public class Genre {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Id;
@@ -22,7 +22,7 @@ public class Gender {
     private String type;
     private String url;
 
-    public Gender(long malId, String name, String type, String url) {
+    public Genre(long malId, String name, String type, String url) {
         this.malId = malId;
         this.name = name;
         this.type = type;

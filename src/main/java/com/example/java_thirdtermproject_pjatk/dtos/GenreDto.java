@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @AllArgsConstructor
-public class GenderDto {
+public class GenreDto {
 
     @JsonProperty("mal_id")
     private long malId;

@@ -1,7 +1,5 @@
 package com.example.java_thirdtermproject_pjatk.dtos;
 
-import com.example.java_thirdtermproject_pjatk.data.Gender;
-import com.example.java_thirdtermproject_pjatk.data.Studio;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,5 +27,5 @@ public class AnimeDto {
 
     private List<StudioDto> studios;
 
-    private List<GenderDto> genders;
+    private List<GenreDto> genders;
 }

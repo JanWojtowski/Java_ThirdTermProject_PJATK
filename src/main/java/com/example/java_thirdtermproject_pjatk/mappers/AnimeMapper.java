@@ -2,8 +2,6 @@ package com.example.java_thirdtermproject_pjatk.mappers;
 
 import com.example.java_thirdtermproject_pjatk.data.Anime;
 import com.example.java_thirdtermproject_pjatk.dtos.AnimeDto;
-import com.example.java_thirdtermproject_pjatk.dtos.GenderDto;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import com.example.java_thirdtermproject_pjatk.resource.CreateAnime;
@@ -12,7 +10,7 @@ import com.example.java_thirdtermproject_pjatk.resource.CreateAnime;
 @RequiredArgsConstructor
 public class AnimeMapper {
     private final StudioMapper studioMapper;
-    private final GenderMapper genderMapper;
+    private final GenreMapper genreMapper;
 
     public AnimeDto toDto(Anime anime){
         return new AnimeDto(
@@ -28,7 +26,7 @@ public class AnimeMapper {
                 anime.getSeason(),
                 anime.getYear(),
                 anime.getStudios().stream().map(studioMapper::toDto).toList(),
-                anime.getGenders().stream().map(genderMapper::toDto).toList()
+                anime.getGenres().stream().map(genreMapper::toDto).toList()
         );
     }
 

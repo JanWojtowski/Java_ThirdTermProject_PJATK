@@ -1,7 +1,7 @@
 package com.example.java_thirdtermproject_pjatk.Service;
 
 import com.example.java_thirdtermproject_pjatk.data.Anime;
-import com.example.java_thirdtermproject_pjatk.data.Gender;
+import com.example.java_thirdtermproject_pjatk.data.Genre;
 import com.example.java_thirdtermproject_pjatk.dtos.AnimeDto;
 import com.example.java_thirdtermproject_pjatk.exception.AnimeNotFoundException;
 import com.example.java_thirdtermproject_pjatk.mappers.AnimeMapper;
@@ -31,13 +31,21 @@ public class AnimeService {
                 .orElseThrow(() -> new AnimeNotFoundException("Anime with title " + title + " not found."));
     }
 
-    public AnimeDto getAnimeByMalId(Integer MalId){
-        return animeRepository.findAnimeByMalId(MalId).map(animeMapper::toDto).
-                orElseThrow(() -> new AnimeNotFoundException("Anime with MyAnimeList Id " + MalId  + " not found."));
+    public AnimeDto getAnimeByMalId(Integer malId){
+        return animeRepository.findAnimeByMalId(malId).map(animeMapper::toDto).
+                orElseThrow(() -> new AnimeNotFoundException("Anime with MyAnimeList Id " + malId  + " not found."));
     }
 
-    public List<AnimeDto> findAnimesByGender(List<Gender> genders){
-        return animeRepository.findAnimesByGender(genders).stream().map(animeMapper::toDto).toList();
+    public List<AnimeDto> getAnimesByGenders(List<Genre> genres){
+        return animeRepository.findAnimesByGender(genres).stream().map(animeMapper::toDto).toList();
+    }
+
+    public void deleteAnimeByMalId(Integer malId){
+        var anime = animeRepository.findAnimeByMalId(malId);
+        if(anime.isEmpty()){
+            throw new AnimeNotFoundException("Anime with MyAnimeList Id " + malId + " not found.");
+        }
+        animeRepository.deleteAnimeByMalId(anime.get().getMalId());
     }
 
 }

@@ -11,7 +11,7 @@ import java.time.Instant;
 @ControllerAdvice
 public class ExceptionResponseControllerAdvice {
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    @ExceptionHandler(value = {ResourceNotFoundException.class, StudioNotFoundException.class, AnimeNotFoundException.class, GenderNotFoundException.class})
+    @ExceptionHandler(value = {ResourceNotFoundException.class, StudioNotFoundException.class, AnimeNotFoundException.class, GenreNotFoundException.class})
     @ResponseBody
     public ErrorResponse handeNotFound(RuntimeException exception){
         return new ErrorResponse(Instant.now(), exception.getMessage());
