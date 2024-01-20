@@ -2,6 +2,7 @@ package com.example.java_thirdtermproject_pjatk.data;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.util.ArrayList;
 import java.util.List;

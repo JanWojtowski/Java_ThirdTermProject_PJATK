@@ -21,9 +21,8 @@ public class GenreService {
                 .orElseThrow(() -> new GenreNotFoundException("Genre with name " + name + " not found."));
     }
 
-    public GenreDto getGenreByType(String type){
-        return genreRepository.findGenreByType(type).map(genreMapper::toDto)
-                .orElseThrow(() -> new GenreNotFoundException("Genre with type " + type + " not found."));
+    public List<GenreDto> getGenreByType(String type){
+        return genreRepository.findGenreByType(type).stream().map(genreMapper::toDto).toList();
     }
 
     public List<GenreDto> getGenresByMalId(Integer malId){

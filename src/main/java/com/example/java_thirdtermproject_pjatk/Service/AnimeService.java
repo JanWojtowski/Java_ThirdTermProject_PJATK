@@ -36,9 +36,9 @@ public class AnimeService {
                 orElseThrow(() -> new AnimeNotFoundException("Anime with MyAnimeList Id " + malId  + " not found."));
     }
 
-    public List<AnimeDto> getAnimesByGenders(List<Genre> genres){
-        return animeRepository.findAnimesByGender(genres).stream().map(animeMapper::toDto).toList();
-    }
+    //public List<AnimeDto> getAnimesByGenders(List<Genre> genres){
+    //    return animeRepository.findAnimesByGender(genres).stream().map(animeMapper::toDto).toList();
+   // }
 
     public void deleteAnimeByMalId(Integer malId){
         var anime = animeRepository.findAnimeByMalId(malId);

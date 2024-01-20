@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15.0
+    environment:
+      POSTGRES_PASSWORD: anime
+      POSTGRES_USER: anime
+      POSTGRES_DATABASE: anime
+    ports:
+      - "54329:5432"

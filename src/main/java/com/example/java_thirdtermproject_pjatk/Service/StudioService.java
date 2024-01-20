@@ -21,12 +21,11 @@ public class StudioService {
                 .orElseThrow(() -> new StudioNotFoundException("Studio with name " + name + " not found."));
     }
 
-    public StudioDto getGenreByType(String type){
-        return studioRepository.findStudioByType(type).map(studioMapper::toDto)
-                .orElseThrow(() -> new StudioNotFoundException("Studio with type " + type + " not found."));
+    public List<StudioDto> getStudiosByType(String type){
+        return studioRepository.findStudioByType(type).stream().map(studioMapper::toDto).toList();
     }
 
-    public List<StudioDto> getGenresByMalId(Integer malId){
+    public List<StudioDto> getStudiosByMalId(Integer malId){
         return studioRepository.findStudiosByMalId(malId).stream().map(studioMapper::toDto).toList();
     }
 }
