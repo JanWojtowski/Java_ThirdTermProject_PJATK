@@ -13,7 +13,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-@Repository
+
 @EnableJpaRepositories
 public interface AnimeRepository extends JpaRepository<Anime,Long> {
     Optional<Anime> findAnimeByTitle(String title);

@@ -1,9 +1,11 @@
 package com.example.java_thirdtermproject_pjatk.repository;
 
+import org.springframework.context.annotation.Bean;
+import org.springframework.stereotype.Component;
 public interface ICatalogData {
-    AnimeRepository getAnimes();
+    AnimeRepository getAnime();
 
-    GenreRepository getGenres();
+    GenreRepository getGenre();
 
-    StudioRepository getStudios();
+    //StudioRepository getStudio();
 }
