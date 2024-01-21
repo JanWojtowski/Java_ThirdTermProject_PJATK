@@ -1,27 +1,55 @@
 package com.example.java_thirdtermproject_pjatk.updater;
 
 import com.example.java_thirdtermproject_pjatk.dtos.AnimeDto;
-import com.example.java_thirdtermproject_pjatk.resource.CreateAnime;
-import org.springframework.beans.factory.annotation.Value;
+import com.example.java_thirdtermproject_pjatk.dtos.PageResultDto;
+import com.example.java_thirdtermproject_pjatk.exception.AnimeNotFoundException;
+import com.example.java_thirdtermproject_pjatk.exception.ResourceNotFoundException;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import org.springframework.web.util.UriBuilder;
+import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
-import java.net.URISyntaxException;
+
 
 @Component
 public class JikanClient implements IJikanClient{
 
-    RestTemplate restClient;
-    @Value("https://api.jikan.moe/v4")
-    String baseUrl;
+    private final RestTemplate restClient;
 
-    public CreateAnime getAnime(int id) throws URISyntaxException {
-        var url = baseUrl + "/anime/" + id;
-        var anime = restClient.getForEntity(new URI(url),CreateAnime.class).getBody();
-        System.out.println(anime);
-        return anime;
+    public JikanClient() {
+        this.restClient = new RestTemplate();
+    }
+
+    public AnimeDto getAnime(int id) {
+        try {
+            String url = UriComponentsBuilder.
+                    fromUriString("https://api.jikan.moe/v4").
+                    pathSegment("anime/" + id).build().toUriString();
+            var pageResultDto = restClient.getForEntity(new URI(url), PageResultDto.class).getBody();
+            if (pageResultDto != null) {
+                return new AnimeDto(
+                        pageResultDto.getData().getMalId(),
+                        pageResultDto.getData().getUrl(),
+                        pageResultDto.getData().getTitle(),
+                        pageResultDto.getData().getTitleEnglish(),
+                        pageResultDto.getData().getTitleJapanese(),
+                        pageResultDto.getData().getEpisodes(),
+                        pageResultDto.getData().getStatus(),
+                        pageResultDto.getData().getRating(),
+                        pageResultDto.getData().getRank(),
+                        pageResultDto.getData().getSeason(),
+                        pageResultDto.getData().getYear(),
+                        pageResultDto.getData().getStudios(),
+                        pageResultDto.getData().getGenders()
+                );
+            }
+            else{
+                throw new ResourceNotFoundException("No Resource found");
+            }
+        }
+        catch (Exception e){
+            throw new AnimeNotFoundException("Anime not found");
+        }
     }
 
 

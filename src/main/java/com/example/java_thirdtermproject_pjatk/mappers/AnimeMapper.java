@@ -45,4 +45,19 @@ public class AnimeMapper {
                 createAnime.getYear());
     }
 
+    public Anime toEntity(AnimeDto animeDto){
+        return new Anime(
+                animeDto.getMalId(),
+                animeDto.getUrl(),
+                animeDto.getTitle(),
+                animeDto.getTitleEnglish(),
+                animeDto.getTitleJapanese(),
+                animeDto.getEpisodes(),
+                animeDto.getStatus(),
+                animeDto.getRating(),
+                animeDto.getRank(),
+                animeDto.getSeason(),
+                animeDto.getYear());
+
+    }
 }

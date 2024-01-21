@@ -1,14 +1,8 @@
 package com.example.java_thirdtermproject_pjatk.updater;
 
-import com.example.java_thirdtermproject_pjatk.dtos.AnimeDto;
 import com.example.java_thirdtermproject_pjatk.mappers.AnimeMapper;
-import com.example.java_thirdtermproject_pjatk.mappers.ICatalogMappers;
 import com.example.java_thirdtermproject_pjatk.repository.AnimeRepository;
-import com.example.java_thirdtermproject_pjatk.repository.ICatalogData;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-
-import java.net.URISyntaxException;
 
 @Component
 public class AnimeUpdater{
@@ -22,12 +16,23 @@ public class AnimeUpdater{
         this.entitiesMapper = entitiesMapper;
     }
 
-    public void updateFirst100() throws URISyntaxException {
-        for(int i = 1; i <= 100; i++){
-            var anime = jikanClient.getAnime(i);
-            data.save(entitiesMapper.toEntity(anime));
+    public void updateFirst100() {
+        for(int i = 1; i <= 202; i++){
+            try {
+                var anime = jikanClient.getAnime(i);
+                data.save(entitiesMapper.toEntity(anime));
+            }
+            catch (Exception e){
+                e.printStackTrace();
+                continue;
+            }
+            try {
+                Thread.sleep(1000);
+            }
+            catch (InterruptedException e){
+                Thread.currentThread().interrupt();
+            }
         }
-
     }
 
 }

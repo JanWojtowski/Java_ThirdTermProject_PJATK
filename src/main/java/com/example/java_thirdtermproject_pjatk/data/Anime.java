@@ -2,7 +2,6 @@ package com.example.java_thirdtermproject_pjatk.data;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +11,7 @@ import java.util.Objects;
 @Getter
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@NoArgsConstructor
 public class Anime {
 
     @Id
