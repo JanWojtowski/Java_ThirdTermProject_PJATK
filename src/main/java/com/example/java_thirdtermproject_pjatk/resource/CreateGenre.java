@@ -11,8 +11,8 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CreateGenre {
-    @NotBlank
     private long malId;
+    @NotBlank
     private String name;
     private String type;
     private String url;

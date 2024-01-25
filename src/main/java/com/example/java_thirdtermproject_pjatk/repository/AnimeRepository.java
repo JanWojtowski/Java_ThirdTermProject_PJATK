@@ -25,7 +25,6 @@ public interface AnimeRepository extends JpaRepository<Anime,Long> {
     Optional<Anime> findAnimeByMalId(@Param("id") int malId);
 
     @Modifying
-    @Transactional
     void deleteAnimeByMalId(Integer malId);
 
 }

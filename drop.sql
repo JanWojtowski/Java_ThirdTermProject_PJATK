@@ -6,4 +6,3 @@ drop table if exists anime cascade;
 drop table if exists anime_genres cascade;
 drop table if exists anime_studios cascade;
 drop table if exists genre cascade;
-drop table if exists studio cascade;

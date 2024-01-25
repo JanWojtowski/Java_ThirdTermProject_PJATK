@@ -7,6 +7,7 @@ import com.example.java_thirdtermproject_pjatk.exception.AnimeNotFoundException;
 import com.example.java_thirdtermproject_pjatk.mappers.AnimeMapper;
 import com.example.java_thirdtermproject_pjatk.repository.AnimeRepository;
 import com.example.java_thirdtermproject_pjatk.resource.CreateAnime;
+import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +40,7 @@ public class AnimeService {
     //public List<AnimeDto> getAnimesByGenders(List<Genre> genres){
     //    return animeRepository.findAnimesByGender(genres).stream().map(animeMapper::toDto).toList();
    // }
-
+    @Transactional
     public void deleteAnimeByMalId(Integer malId){
         var anime = animeRepository.findAnimeByMalId(malId);
         if(anime.isEmpty()){
