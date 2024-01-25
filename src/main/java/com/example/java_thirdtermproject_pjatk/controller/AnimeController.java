@@ -21,7 +21,7 @@ public class AnimeController {
         return ResponseEntity.ok(anime);
     }
 
-    @GetMapping("/id/{malId}/delete")
+    @DeleteMapping
     public ResponseEntity deleteAnimeByMalId(@PathVariable("malId") Integer malId){
         animeService.deleteAnimeByMalId(malId);
         return ResponseEntity.ok(malId);
@@ -33,7 +33,7 @@ public class AnimeController {
         return ResponseEntity.ok(anime);
     }
 
-    @PostMapping("/add")
+    @PutMapping
     public String addAnimeAndRedirectToMainPage(@ModelAttribute CreateAnime createAnime){
         animeService.createAnime(createAnime);
         return "redirect:/anime";
